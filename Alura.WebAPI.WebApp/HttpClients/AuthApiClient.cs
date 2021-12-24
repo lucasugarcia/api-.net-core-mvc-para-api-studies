@@ -16,13 +16,21 @@ namespace Alura.ListaLeitura.HttpClients
             _httpClient = httpClient;
         }
 
-        public async Task<string> PostLoginAsync(LoginModel model)
+        public async Task<LoginResult> PostLoginAsync(LoginModel model)
         {
             var resposta = await _httpClient.PostAsJsonAsync("login", model);
 
-            resposta.EnsureSuccessStatusCode();
-
-            return await resposta.Content.ReadAsStringAsync();
+            return new LoginResult()
+            {
+                Succeeded = resposta.IsSuccessStatusCode,
+                Token = await resposta.Content.ReadAsStringAsync()
+            };
         }
+    }
+
+    public class LoginResult
+    {
+        public bool Succeeded { get; set; }
+        public string Token { get; set; }
     }
 }
