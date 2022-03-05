@@ -20,6 +20,5 @@ namespace Alura.WebAPI.Api.Modelos
             
             return query;
         }
-
     }
 }
