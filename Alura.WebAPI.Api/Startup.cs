@@ -57,6 +57,8 @@ namespace Alura.WebAPI.Api
                     ValidAudience = "Postman"
                 };
             });
+
+            services.AddApiVersioning();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
