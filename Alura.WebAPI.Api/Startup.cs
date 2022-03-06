@@ -41,6 +41,11 @@ namespace Alura.WebAPI.Api
                 options.Filters.Add(typeof(ErrorResponseFilter));
             }).AddXmlSerializerFormatters();
 
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
+
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = "JwtBearer";

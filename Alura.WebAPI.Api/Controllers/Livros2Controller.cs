@@ -72,7 +72,7 @@ namespace Alura.ListaLeitura.Api.Controllers
                 return Created(uri, livro);
             }
 
-            return BadRequest();
+            return BadRequest(ErrorResponse.FromModelState(ModelState));
         }
 
         [HttpPut]
