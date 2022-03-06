@@ -70,7 +70,8 @@ namespace Alura.WebAPI.Api
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Description = "Documentação da API", Version = "1.0" });
+                c.SwaggerDoc("v1", new Info { Title = "Livros API", Description = "Documentação da API de livros.", Version = "1.0" });
+                c.SwaggerDoc("v2", new Info { Title = "Livros API", Description = "Documentação da API de livros.", Version = "2.0" });
             });
         }
 
@@ -87,7 +88,11 @@ namespace Alura.WebAPI.Api
 
             app.UseSwagger();
 
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1"));
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Versão 1.0");
+                c.SwaggerEndpoint("/swagger/v2/swagger.json", "Versão 2.0");
+            });
         }
     }
 }
